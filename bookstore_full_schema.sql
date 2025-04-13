@@ -211,3 +211,13 @@ INSERT INTO order_history (order_id, status_id, change_date) VALUES
 (1, 2, '2025-04-11'),
 (2, 2, '2025-04-11'),
 (2, 3, '2025-04-12');
+
+-- Granting User privileges to only view data but cannot modify
+CREATE USER 'readonly_user'@'localhost' IDENTIFIED BY 'book@123';
+GRANT SELECT ON bookstore.* TO 'readonly_user'@'localhost';
+
+-- Granting admin user with full permissions on all tables in the bookstore database
+CREATE USER 'admin_user'@'localhost' IDENTIFIED BY '123@bookstore';
+GRANT ALL PRIVILEGES ON bookstore.* TO 'admin_user'@'localhost';
+
+
